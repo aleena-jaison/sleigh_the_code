@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Tree</title>
+    <style>
+        /* Ensure the page takes the full height */
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #041424; /* Dark bluish background */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Create a container that divides the page into two halves */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left half for the Merry Christmas text */
+        .left-half {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%; /* Left half */
+            color: antiquewhite;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            margin-left: 320px;
+        }
+
+        /* Right half for the tree */
+        .right-half {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%; /* Right half */
+            position: relative;
+            margin-left: 100px;
+        }
+
+        /* Main tree triangle */
+        .tree {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 110px solid rgb(7, 153, 7); /* Adjusted for equilateral triangle */
+            position: relative;
+            margin: 0 auto;
+            left: -220px;
+        }
+
+        /* Middle layer of the tree */
+        .tree:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 90px solid transparent;
+            border-right: 90px solid transparent;
+            border-bottom: 100px solid rgb(7, 153, 7); /* Adjusted for equilateral triangle */
+            position: absolute;
+            top: -75px;  /* Adjusted for equal spacing */
+            left: -91px;
+        }
+
+        /* Top layer of the tree */
+        .tree:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 90px solid rgb(7, 153, 7); /* Adjusted for equilateral triangle */
+            position: absolute;
+            top: -145px;
+            left: -76.5px;
+        }
+
+        /* Tree trunk */
+        .trunk {
+            width: 35px;
+            height: 80px;
+            background: brown;
+            margin: 0 auto;
+            position: fixed;
+            top: 376px;
+            right: 440px;
+        }
+
+        /* Snowflakes (dots) effect */
+        .snowflake {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: snow 5s linear infinite; /* Ensure continuous, seamless animation */
+        }
+
+        /* Snow falling animation */
+        @keyframes snow {
+            0% {
+                transform: translateY(-600px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Generating random snowflakes */
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 7s; }
+        .snowflake:nth-child(2) { left: 30%; animation-duration: 6s; }
+        .snowflake:nth-child(3) { left: 50%; animation-duration: 5s; }
+        .snowflake:nth-child(4) { left: 70%; animation-duration: 9s; }
+        .snowflake:nth-child(5) { left: 90%; animation-duration: 7s; }
+        .snowflake:nth-child(6) { left: 15%; animation-duration: 8s; }
+        .snowflake:nth-child(7) { left: 35%; animation-duration: 6s; }
+        .snowflake:nth-child(8) { left: 55%; animation-duration: 6s; }
+        .snowflake:nth-child(9) { left: 75%; animation-duration: 9s; }
+        .snowflake:nth-child(10) { left: 95%; animation-duration: 8s; }
+
+        /* Red ornaments on the tree */
+        .ornament {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Positioning the ornaments on the tree */
+        .tree .ornament:nth-child(1) { top: -85px; left: 15px; }
+        .tree .ornament:nth-child(2) { top: -80px; left: -40px; }
+        .tree .ornament:nth-child(3) { top: -40px; left: -17px; }
+        .tree .ornament:nth-child(4) { top: -115px; left: -10px; }
+        .tree .ornament:nth-child(5) { top: 8px; left: 45px; }
+        .tree .ornament:nth-child(6) { top: 4px; left: -50px; }
+        .tree .ornament:nth-child(7) { top: 60px; left: 15px; }
+        .tree .ornament:nth-child(8) { top: 90px; left: 50px; }
+        .tree .ornament:nth-child(9) { top: 50px; left: -20px; }
+        .tree .ornament:nth-child(10) { top: 90px; left: -50px; }
+        .tree .ornament:nth-child(11) { top: -10px; left: 10px; }
+        .tree .ornament:nth-child(12) { top: 90px; left: -50px; }
+
+        .star {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid yellow;
+            position: absolute;
+            top: -170px;
+            left: -17px;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+        .star:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid yellow;
+            position: absolute;
+            top: 10px;
+            left: -15px;
+            transform: rotate(0deg);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left half for "Merry Christmas" -->
+        <div class="left-half">
+            <h1 style="font-size: 50px;">Merry Christmas</h1>
+        </div>
+
+        <!-- Right half for the tree -->
+        <div class="right-half">
+            <div class="tree">
+                <!-- Ornaments on the tree -->
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="ornament"></div>
+                <div class="star"></div>
+            </div>
+            <div class="trunk"></div>
+        </div>
+    </div>
+
+    <!-- Snowflakes -->
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+    <div class="snowflake"></div>
+
+</body>
+</html>
